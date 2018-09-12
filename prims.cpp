@@ -76,10 +76,10 @@ void prim()
 				parent[v]=u;
 			}
 		}
-		printMST(mst, key,parent);
+		printMST(mst, key, parent);
 	}
 
-	printMST(mst, key,parent);
+	printMST(mst, key, parent);
 }
 
 int main()
