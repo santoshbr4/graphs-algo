@@ -4,41 +4,40 @@
 
 using namespace std;
 
-int queue[10];
-int front = 0, rear = -1, empt=1;
+#define QUEUE_SIZE 100
+int queue[QUEUE_SIZE];
+int front = -1, rear = -1, empty = 1;
 
 void enqueue(int vertex)
 {
-	//cout << "enqueued " << vertex << endl;
-	if (rear == 10)
+	if (rear == QUEUE_SIZE)
 	{
 		return;
 	}
-	rear++;
-	queue[rear] = vertex;
-	empt = 0;
+	queue[++rear] = vertex;
+	empty = 0;
 }
 
 int dequeue()
 {
-	//cout << "dequeued " << queue[front] << " front=" << front << endl;
-	if (front > rear)
+	if (front == rear)
 	{
-		front = 0;
+		front = -1;
 		rear = -1;
 		return -1;
 	}
 	else
 	{
+		++front;
 		if (front == rear)
-			empt = 1;
-		return queue[front++];
+			empty = 1;
+		return queue[front];
 	}
 }
 
 int empty()
 {
-	return empt;
+	return empty;
 }
 
 void bfs(graph *g)
@@ -56,7 +55,7 @@ void bfs(graph *g)
 		{
 			int v = dequeue();
 			g->processed[v] = 1;
-			cout << v << '\t';
+			//cout << v << '\t';
 			adjNode *p = g->arr[v].head;
 			while (p)
 			{
