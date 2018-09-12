@@ -22,11 +22,6 @@ void add_edge(graph* g, int src, int dst)
 	adjNode *p = add_node(dst);
 	p->next = g->arr[src].head;
 	g->arr[src].head = p;
-
-	//For undirected graph
-	adjNode *t = add_node(src);
-	t->next = g->arr[dst].head;
-	g->arr[dst].head = t;
 }
 
 graph *init_graph(int vertices)
@@ -51,6 +46,15 @@ graph *init_graph(int vertices)
 	{
 		g->processed[i] = 0;
 	}
+	
+	/*
+	for (int i = 0; i < vertices; i++)
+	{
+		g->arr[i].head = 0;
+		g->visited[i] = 0;
+		g->processed[i] = 0;
+	} 
+	*/
 
 	return g;
 }
