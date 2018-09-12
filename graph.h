@@ -1,5 +1,4 @@
 /* Author: Santosh B R (santoshbr4@gmail.com)*/
-#pragma once
 
 typedef struct adjNode_t
 {
